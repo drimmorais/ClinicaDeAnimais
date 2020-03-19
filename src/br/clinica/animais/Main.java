@@ -19,14 +19,14 @@ public class Main {
 
 		int opcao = 0;
 		do {
-			System.out.println("1 - Cadastrar cavalo");
+			System.out.println("\n1 - Cadastrar cavalo");
 			System.out.println("2 - Cadastrar girafa");
 			System.out.println("3 - Listar cavalos");
 			System.out.println("4 - Listar girafas");
 			System.out.println("5 - Listar todos os animais");
 			System.out.println("6 - Remover um animal por id");
 			System.out.println("7 - Quantidade de animais por tipo");
-			System.out.println("8. sair");
+			System.out.println("8 - Sair");
 			opcao = ler.nextInt();
 
 			switch (opcao) {
@@ -45,8 +45,21 @@ public class Main {
 				int idGirafa = ler.nextInt();
 				CadastrarGirafa(idGirafa, nomeGirafa);
 				break;
-
-			case 3:
+				
+			case 3: 
+				ListarCavalos();
+				break;
+				
+			case 4:
+				ListarGirafas();
+				break;
+				
+			case 5:
+				ListarCavalos();
+				ListarGirafas();
+				break;
+				
+			case 8:
 				System.exit(0);
 				break;
 
@@ -65,7 +78,7 @@ public class Main {
 		Cavalo cavalo = new Cavalo(id, nome);
 		
 		listCavalo.add(cavalo);
-		System.out.println("Seu Cavalo foi adicionado! =D");
+		System.out.println("Seu Cavalo foi adicionado! =D \n O que deseja fazer agora? \n");
 	}
 
 	private void CadastrarGirafa(int id, String nome) {
@@ -78,14 +91,14 @@ public class Main {
 	private void ListarCavalos() {
 		
 		for (Animais cavalo : listCavalo) {
-			System.out.println("Id do cavalo" + cavalo.getId() + " | " + "Nome do cavalo" + cavalo.getNome());
+			System.out.println("Id do cavalo: " + cavalo.getId() + " | " + "Nome do cavalo: " + cavalo.getNome());
 		}
 		
 		
 	}
 	private void ListarGirafas() {
 		for (Animais girafa : listGirafa) {
-			System.out.println("Id do cavalo" + girafa.getId() + " | " + "Nome do cavalo" + girafa.getNome());
+			System.out.println("Id da girafa: " + girafa.getId() + " | " + "Nome da girafa: " + girafa.getNome());
 		}
 	}
 }
