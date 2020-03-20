@@ -1,5 +1,4 @@
 package br.clinica.animais;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -59,6 +58,14 @@ public class Main {
 				ListarGirafas();
 				break;
 				
+			/*case 6:
+				System.out.println("Qual o ID do animal que deseja excluir? :");
+				int idRemove = ler.nextInt();
+				RemoverAnimal(idRemove);
+;				break;*/
+			case 7:
+				QuantidadeTipo();
+				break;
 			case 8:
 				System.exit(0);
 				break;
@@ -96,9 +103,40 @@ public class Main {
 		
 		
 	}
+	
 	private void ListarGirafas() {
 		for (Animais girafa : listGirafa) {
 			System.out.println("Id da girafa: " + girafa.getId() + " | " + "Nome da girafa: " + girafa.getNome());
 		}
 	}
+
+	/*private void RemoverAnimal(int id) {
+        		
+		listCavalo.remove(id);
+		listGirafa.remove(id);
+		System.out.println("O animal foi removido! :(");
+	
+
+}*/
+
+	private void QuantidadeTipo() {
+		int contC = 0;
+		int contG = 0;
+		
+		for (Animais cavalo : listCavalo) {
+			contC++;
+		}
+		
+		for (Animais girafa : listGirafa) {
+			contG++;
+		}
+		
+		System.out.println("O número de cavalos cadastrados são: " + contC);
+		System.out.println("O número de girafas cadastrados são: " + contG);
+		
+	}
+
 }
+
+	
+
