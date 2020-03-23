@@ -57,12 +57,11 @@ public class Main {
 				ListarCavalos();
 				ListarGirafas();
 				break;
-				
-			/*case 6:
+			case 6:
 				System.out.println("Qual o ID do animal que deseja excluir? :");
-				int idRemove = ler.nextInt();
-				RemoverAnimal(idRemove);
-;				break;*/
+				int idQueEstouProcurando = ler.nextInt();
+				RemoverAnimal(idQueEstouProcurando);
+;				break;
 			case 7:
 				QuantidadeTipo();
 				break;
@@ -77,27 +76,28 @@ public class Main {
 		}while (true);
 	}
 	
-	List<Animais> listCavalo = new ArrayList<Animais>();
-	List<Animais> listGirafa = new ArrayList<Animais>();
+	List<Animais> listaCavalo = new ArrayList<Animais>();
+	List<Animais> listaGirafa = new ArrayList<Animais>();
+	List<Animais> listaAnimais = new ArrayList<Animais>(listaCavalo.size()+ listaGirafa.size());
 	
 	private void CadastrarCavalo(int id, String nome) {
 
 		Cavalo cavalo = new Cavalo(id, nome);
 		
-		listCavalo.add(cavalo);
+		listaCavalo.add(cavalo);
 		System.out.println("Seu Cavalo foi adicionado! =D \n O que deseja fazer agora? \n");
 	}
 
 	private void CadastrarGirafa(int id, String nome) {
 
 		Girafa girafa = new Girafa (id, nome);
-		listGirafa.add(girafa);
+		listaGirafa.add(girafa);
 		System.out.println("Sua Girafa foi adicionada! =D");
 	}
 	
 	private void ListarCavalos() {
 		
-		for (Animais cavalo : listCavalo) {
+		for (Animais cavalo : listaCavalo) {
 			System.out.println("Id do cavalo: " + cavalo.getId() + " | " + "Nome do cavalo: " + cavalo.getNome());
 		}
 		
@@ -105,29 +105,47 @@ public class Main {
 	}
 	
 	private void ListarGirafas() {
-		for (Animais girafa : listGirafa) {
+		for (Animais girafa : listaGirafa) {
 			System.out.println("Id da girafa: " + girafa.getId() + " | " + "Nome da girafa: " + girafa.getNome());
 		}
 	}
-
-	/*private void RemoverAnimal(int id) {
-        		
-		listCavalo.remove(id);
-		listGirafa.remove(id);
-		System.out.println("O animal foi removido! :(");
 	
+	private void ListarTudo() {
+		
+		listaAnimais.addAll(listaCavalo);
+		listaAnimais.addAll(listaGirafa);
+		
+	}
+	
+	private void RemoverAnimal(int idQueEstouProcurando){
+		
+		ListarTudo();
+		
+		int indiceDesteItemNaLista = 0;
+		for (int i = 0; i < listaAnimais.size(); i++) {
+			Animais animais = listaAnimais.get(i);
+			if (animais.getId() == idQueEstouProcurando) {
+				indiceDesteItemNaLista = i;
+				System.out.println("Me preparando para remover o " + animais.getId() + " | " + animais.getNome() + " na posicao " + i);
+				break;
+			}
+		}
 
-}*/
+		listaAnimais.remove(indiceDesteItemNaLista);
+
+		Animais animal = listaAnimais.get(indiceDesteItemNaLista);
+		System.out.println("Novo animal na posicao " + indiceDesteItemNaLista + " | " + animal.getId() + " | " + animal.getNome());
+	}
 
 	private void QuantidadeTipo() {
 		int contC = 0;
 		int contG = 0;
 		
-		for (Animais cavalo : listCavalo) {
+		for (Animais cavalo : listaCavalo) {
 			contC++;
 		}
 		
-		for (Animais girafa : listGirafa) {
+		for (Animais girafa : listaGirafa) {
 			contG++;
 		}
 		
